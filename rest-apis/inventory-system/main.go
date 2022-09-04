@@ -1,3 +1,7 @@
+/*
+A simple rest API using Gorilla /mux
+*/
+
 package main
 
 import (
