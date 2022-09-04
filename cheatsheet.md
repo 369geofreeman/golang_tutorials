@@ -198,7 +198,7 @@ fmt.Println(slice, len(slice), cap(slice))
 ```
 
 - Append
-Wen we append to a slice we do like below
+When we append to a slice we do like below
 ```
 func main() {
     myTutors := []string{"Kirsty", "Mishell", "Jose", "Neil"}
@@ -226,7 +226,7 @@ func printFirstLastSlice(slice []int) {
     }
 }
 ```
-Due to Go being a pass by value language, modifying a normal array parameter won’t create permanent change. Sometimes this can be useful in performing local calculations.
+Due to Go being a pass-by-value language, modifying a normal array parameter won’t create permanent change. Sometimes this can be useful in performing local calculations.
 ```
 // Changes to the array will only be local to the function
 func changeFirst(array [4]int, value int) {
@@ -786,7 +786,34 @@ Since addHundred() expects a pointer (and pointers are variables that store an a
 GO routines are function that can run at the same time as other functions by utilising multiple threads on a CPU
 
 goroutines are better described as green threads, which dynamically map function execution to operating system threads as needed. goroutines might be executed asynchronously on the same operating system thread, which is especially useful in the case that they perform io operations
-                   
+
+We use the `go` expression before calling a function to make it a go routine
+
+- Example of a go routine calling the same function twice at the same time
+```
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+	go count("sheep")
+	count("fish")
+}
+
+func count(thing string) {
+	for i := 1; true; i++ {
+		fmt.Println(i, thing)
+		time.Sleep(time.Millisecond * 500)
+	}
+}
+```
+
+- We can create many simultanious go routines as Go does a very good job with concurrency, but it won't make the program any faster as we are constrained by how many calls our CPU has.
+
+
 <hl>
 
 	
