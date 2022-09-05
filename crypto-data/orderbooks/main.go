@@ -1,10 +1,12 @@
 package main
 
 import (
+	"database/sql"
 	"encoding/json"
 	"fmt"
 
 	"github.com/gorilla/websocket"
+	_ "github.com/lib/pq"
 )
 
 type Trade struct {
@@ -19,9 +21,8 @@ type Trade struct {
 	Asks            [][]string `json:"a"`
 }
 
-func main() {
+func readData(url string) {
 
-	var url string = "wss://fstream.binance.com/ws/bnbusdt@depth@500ms"
 	c, _, err := websocket.DefaultDialer.Dial(url, nil)
 	if err != nil {
 		panic(err)
@@ -48,8 +49,6 @@ func main() {
 		close(input)
 	}()
 
-	fmt.Println(input)
-
 	output := make(chan Trade)
 	go func() {
 		for trade := range input {
@@ -59,75 +58,47 @@ func main() {
 	}()
 
 	for trade := range output {
-		json, _ := json.Marshal(trade)
-		fmt.Println(string(json))
-	}
+		timestamp, _ := json.Marshal(trade.EventTime)
+		bids, _ := json.Marshal(trade.Bids)
+		asks, _ := json.Marshal(trade.Asks)
 
+		//  push to database
+		fmt.Println(string(timestamp))
+		fmt.Println(string(bids))
+		fmt.Println(string(asks))
+	}
 }
 
-//  #################################################
+func writeToDatabase() {
+	const (
+		host     = "localhost"
+		port     = 5432
+		user     = "postgress"
+		password = "***"
+		dbname   = "orderbook_data"
+	)
 
-// package main
+	psqlInfo := fmt.Sprintf("host=%s port=%d user=%s "+"password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
 
-// import (
-// 	"encoding/json"
-// 	"fmt"
+	db, err := sql.Open("postgres", psqlInfo)
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
 
-// 	"github.com/gorilla/websocket"
-// )
+	err = db.Ping()
+	if err != nil {
+		panic(err)
+	}
 
-// type Trade struct {
-// 	Exchange  string  `json:"exchange"`
-// 	Base      string  `json:"base"`
-// 	Quote     string  `json:"quote"`
-// 	Direction string  `json:"direction"`
-// 	Price     float64 `json:"price"`
-// 	Volume    int64   `json:"volume"`
-// 	Timestamp int64   `json:"timestamp"`
-// 	PriceUsd  float64 `json:"priceUsd"`
-// }
+	fmt.Println("Successfully connected!")
+}
 
-// func main() {
+func main() {
 
-// 	c, _, err := websocket.DefaultDialer.Dial("wss://ws.coincap.io/trades/binance", nil)
-// 	if err != nil {
-// 		panic(err)
-// 	}
-// 	defer c.Close()
+	// var coin string = "bnbusdt"
+	// url := fmt.Sprintf("wss://fstream.binance.com/ws/%v@10@500ms", coin)
 
-// 	// producer: read data stream from websocket and send to channel
-// 	input := make(chan Trade)
-
-// 	go func() {
-// 		// read from the websocket
-// 		for {
-// 			_, message, err := c.ReadMessage()
-// 			if err != nil {
-// 				break
-// 			}
-// 			// unmarshal the message
-// 			var trade Trade
-// 			json.Unmarshal(message, &trade)
-// 			// send the trade to the channel
-// 			input <- trade
-// 		}
-// 		close(input)
-// 	}()
-
-// 	dogecoin := make(chan Trade)
-// 	go func() {
-// 		for trade := range input {
-// 			if trade.Base == "dogecoin" && trade.Quote == "tether" {
-// 				dogecoin <- trade
-// 			}
-// 		}
-// 		close(dogecoin)
-// 	}()
-
-// 	// print the trades
-// 	for trade := range dogecoin {
-// 		json, _ := json.Marshal(trade)
-// 		fmt.Println(string(json))
-// 	}
-
-// }
+	// readData(url)
+	writeToDatabase()
+}
