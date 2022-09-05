@@ -18,3 +18,4 @@
 ### Crypto
 
 - [BTC price tracker](https://github.com/369geofreeman/golang_tutorials/blob/main/crypto-data/btcTrackingPrice.go)
+- [Binance Orderbook data stream from websocket](ttps://github.com/369geofreeman/golang_tutorials/blob/main/crypto-data/orderbooks/main.go)
