@@ -15,7 +15,7 @@
 - [concurrency examples](https://github.com/369geofreeman/golang_tutorials/blob/main/concurrency/example_1/main.go)
 
 
-### Crypto
+### Crypto
 
 - [BTC price tracker](https://github.com/369geofreeman/golang_tutorials/blob/main/crypto-data/btcTrackingPrice.go)
-- [Binance Orderbook data stream from websocket](ttps://github.com/369geofreeman/golang_tutorials/blob/main/crypto-data/orderbooks/main.go)
+- [Binance Orderbook data stream from websocket](https://github.com/369geofreeman/golang_tutorials/blob/main/crypto-data/orderbooks/main.go)
