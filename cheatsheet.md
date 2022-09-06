@@ -14,6 +14,7 @@
 - [Switch statement](#switch-statement)
 - [Short hand Switch statement](#short-hand-switch-statement)
 - [Functions](#functions)
+- [Variadic Functions](#variadic-functions)
 - [Addresses](#addresses)
 - [Pointers](#pointers)
 - [Dereferencing](#dereferencing)
@@ -671,6 +672,57 @@ returns
 ```
 Calculating Taxes
 Taxes Calculated!
+```
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+### Variadic Functions
+
+Usually, functions in Go accept only a fixed number of arguments. However, it is also possible to write variadic functions in Go.
+
+A variadic function is a function that accepts a variable number of arguments.
+
+If the type of the last parameter in a function definition is prefixed by ellipsis ..., then the function can accept any number of arguments for that parameter.
+
+The variadic parameter must be the last parameter of the function.
+
+Here is an example of an implementation of a variadic function.
+```
+func find(num int, nums ...int) {
+    fmt.Printf("type of nums is %T\n", nums)
+
+    for i, v := range nums {
+        if v == num {
+            fmt.Println(num, "found at index", i, "in", nums)
+            return
+        }
+    }
+
+    fmt.Println(num, "not found in ", nums)
+}
+
+func main() {
+    find(89, 90, 91, 95)
+    // =>
+    // type of nums is []int
+    // 89 not found in  [90 91 95]
+
+    find(45, 56, 67, 45, 90, 109)
+    // =>
+    // type of nums is []int
+    // 45 found at index 2 in [56 67 45 90 109]
+
+    find(87)
+    // =>
+    // type of nums is []int
+    // 87 not found in  []
+}
 ```
 
 
