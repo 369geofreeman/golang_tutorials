@@ -11,3 +11,5 @@
 - [Conditionals](https://github.com/369geofreeman/golang_tutorials/blob/exercism/conditionals.go)
 - [String Formatting](https://github.com/369geofreeman/golang_tutorials/blob/exercism/strFormating.go)
 - [Slices](https://github.com/369geofreeman/golang_tutorials/blob/exercism/slices.go)
+- [Conditionals Switch](https://github.com/369geofreeman/golang_tutorials/blob/exercism/conn_switch.go)
+- [Structs](https://github.com/369geofreeman/golang_tutorials/blob/exercism/structs.go)

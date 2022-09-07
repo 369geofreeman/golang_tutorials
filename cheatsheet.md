@@ -28,6 +28,20 @@
 <br>
 <hr>
 
+
+# Hints
+
+- Get an objects type | fmt.Printf("%T\n", values)
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
 ## Terminal Stuff
 
 - compile code. in terminal run => **go build nameOfFile.go**
