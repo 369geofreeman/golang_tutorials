@@ -13,3 +13,8 @@
 - [Slices](https://github.com/369geofreeman/golang_tutorials/blob/exercism/slices.go)
 - [Conditionals Switch](https://github.com/369geofreeman/golang_tutorials/blob/exercism/conn_switch.go)
 - [Structs](https://github.com/369geofreeman/golang_tutorials/blob/exercism/structs.go)
+- [Random](https://github.com/369geofreeman/golang_tutorials/blob/exercism/random.go)
+- [loops](https://github.com/369geofreeman/golang_tutorials/blob/exercism/loops.go)
+- [functions](https://github.com/369geofreeman/golang_tutorials/blob/exercism/functions.go)
+- [Number Types](https://github.com/369geofreeman/golang_tutorials/blob/exercism/num_types.go)
+- [Time](https://github.com/369geofreeman/golang_tutorials/blob/exercism/time.go)

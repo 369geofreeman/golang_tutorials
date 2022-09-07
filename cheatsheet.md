@@ -2,6 +2,8 @@
 
 ### Contents
 
+- [Hints](#hints)
+- [Types](#types)
 - [Terminal Stuff](#terminal-stuff)
 - [Libaries](#libaries)
 - [File Stuff](#file-stuff)
@@ -33,7 +35,69 @@
 
 - Get an objects type | fmt.Printf("%T\n", values)
 
+- Get the current time | time.Now()
+- Get datetime from string | myDate, err := time.Parse("2006-01-02 15:04:01", "July 25, 2022 13:45:00")
+- get hour from time.time | now.Hour()
 
+- convert float64 to float32 | f64 := float64(f32)
+
+- Generate random number | n := rand.Intn(100) // n is a random int, 0 <= n < 100
+- Generate random number between two ints | rand.Intn(max - min) + min
+- Generate random float | f := rand.Float64() // f is a random float64, 0.0 <= f < 1.0
+- Generate a random float between two floats | r := min + rand.Float64() * (max - min)
+- Setting a seed for random numers | rand.Seed(time.Now().UnixNano())
+- shuffle a slice 
+```
+x := []string{"a", "b", "c", "d", "e"}
+// shuffling the slice put its elements into a random order
+rand.Shuffle(len(x), func(i, j int) {
+	x[i], x[j] = x[j], x[i]
+})
+```
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+## Types
+
+- Ints
+
+| type   |                                                                      |
+|--------|----------------------------------------------------------------------|
+| uint8  | Unsigned 8-bit integers (0 to 255)                                   |
+| uint16 | Unsigned 16-bit integers (0 to 65535)                                |
+| uint32 | Unsigned 32-bit integers (0 to 4294967295)                           |
+| uint64 | Unsigned 64-bit integers (0 to 18446744073709551615)                 |
+| int8   | Signed 8-bit integers (-128 to 127)                                  |
+| int16  | Signed 16-bit integers (-32768 to 32767)                             |
+| int32  | Signed 32-bit integers (-2147483648 to 2147483647)                   |
+| int64  | Signed 64-bit integers (-9223372036854775808 to 9223372036854775807) |
+
+
+- Floats
+
+| type       |                                                                      |
+|------------|----------------------------------------------------------------------|
+| float32    | IEEE-754 32-bit floating-point numbers                               |
+| float64    | IEEE-754 64-bit floating-point numbers                               |
+| complex64  | Complex numbers with float32 real and imaginary parts                |
+| complex128 | Complex numbers with float64 real and imaginary parts                |
+
+
+- Other types
+
+| type    |                                                                        |
+|---------|------------------------------------------------------------------------|
+| byte    | same as uint8                                                          |
+| rune    | same as int32                                                          |
+| uint    | 32 or 64 bits                                                          |
+| int     | same size as uint                                                      |
+| uintptr | an unsigned integer to store the uninterpreted bits of a pointer value |
 
 <br>
 <br>
