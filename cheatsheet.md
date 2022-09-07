@@ -357,8 +357,28 @@ for index, value := range letters {
 
 ## **Maps**
 
-- Create an empty map with `make`
-```variableName := make(map[keyType]valueType)```
+- To create a map, you can do:
+```
+  // With map literal
+  foo := map[string]int{}
+```
+or
+```
+  // or with make function
+  foo := make(map[string]int)
+```
+- Here are some operations that you can do with a map
+```
+  // Add a value in a map with the `=` operator:
+  foo["bar"] = 42
+  // Here we update the element of `bar`
+  foo["bar"] = 73
+  // To retrieve a map value, you can use
+  baz := foo["bar"]
+  // To delete an item from a map, you can use
+  delete(foo, "bar")
+```
+
 
 - Create map with values
 ```
@@ -400,6 +420,17 @@ if status {
 - Deleting from a map
 
 ```delete(yourMap, keyValueToDelete)```
+
+- check key in map
+```
+if val, ok := dict["foo"]; ok {
+    //do something here
+}
+```
+
+- delete key value from map
+```delete(map, key)```
+
 
 
 <br>

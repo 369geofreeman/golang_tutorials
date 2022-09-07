@@ -18,3 +18,4 @@
 - [functions](https://github.com/369geofreeman/golang_tutorials/blob/exercism/functions.go)
 - [Number Types](https://github.com/369geofreeman/golang_tutorials/blob/exercism/num_types.go)
 - [Time](https://github.com/369geofreeman/golang_tutorials/blob/exercism/time.go)
+- [Maps](https://github.com/369geofreeman/golang_tutorials/blob/exercism/maps.go)
