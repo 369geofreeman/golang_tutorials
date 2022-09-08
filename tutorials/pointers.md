@@ -1,3 +1,19 @@
+# Pointers
+
+- [About Pointers](#about-pointers)
+- [Variables and Memory](#variables-and-memory)
+- [Getting a pointer to a variable](#getting-a-pointer-to-a-variable)
+- [Slices and maps are already pointers](#slices-and-maps-are-already-pointers)
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+
 # About Pointers
 
 Pointers are a way to share memory with other parts of our program, which is useful for two major reasons:
