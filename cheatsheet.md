@@ -12,6 +12,7 @@
 - [loops](#loops)
 - [Maps](#maps)
 - [Struct](#struct)
+- [Interface](#interface)
 - [Controll flow](#controll-flow)
 - [Switch statement](#switch-statement)
 - [Short hand Switch statement](#short-hand-switch-statement)
@@ -34,6 +35,7 @@
 # Hints
 
 - Get an objects type | fmt.Printf("%T\n", values)
+- create error | errors.New(string)
 
 - Get the current time | time.Now()
 - Get datetime from string | myDate, err := time.Parse("2006-01-02 15:04:01", "July 25, 2022 13:45:00")
@@ -98,6 +100,73 @@ rand.Shuffle(len(x), func(i, j int) {
 | uint    | 32 or 64 bits                                                          |
 | int     | same size as uint                                                      |
 | uintptr | an unsigned integer to store the uninterpreted bits of a pointer value |
+
+**Runes**
+
+The rune type in Go is an alias for int32. Given this underlying int32 type, the rune type holds a signed 32-bit integer value. However, unlike an int32 type, the integer value stored in a rune type represents a single Unicode character.
+
+Variables of type rune are declared by placing a character inside single quotes:
+```myRune := '¿'```
+
+- Since rune is just an alias for int32, printing a rune's type will yield int32:
+```
+myRune := '¿'
+fmt.Printf("myRune type: %T\n", myRune)
+// Output: myRune type: int32
+```
+
+- Similarly, printing a rune's value will yield its integer (decimal) value:
+```
+myRune := '¿'
+fmt.Printf("myRune value: %v\n", myRune)
+// Output: myRune value: 191
+```
+
+- To print the Unicode character represented by the rune, use the %c formatting verb:
+```
+myRune := '¿'
+fmt.Printf("myRune Unicode character: %c\n", myRune)
+// Output: myRune Unicode character: ¿
+```
+
+- To print the Unicode code point represented by the rune, use the %U formatting verb:
+```
+myRune := '¿'
+fmt.Printf("myRune Unicode code point: %U\n", myRune)
+// Output: myRune Unicode code point: U+00BF
+```
+
+- Runes and Strings
+
+Strings in Go are encoded using UTF-8 which means they contain Unicode characters. Since the rune type represents a Unicode character, a string in Go is often referred to as a sequence of runes. However, runes are stored as 1, 2, 3, or 4 bytes depending on the character. Due to this, strings are really just a sequence of bytes. In Go, slices are used to represent sequences and these slices can be iterated over using range.
+
+Even though a string is just a slice of bytes, the range keyword iterates over a string's runes, not its bytes. In this example, the index variable represents the starting index of the current rune's byte sequence and the char variable represents the current rune:
+
+```
+myString := "❗hello"
+for index, char := range myString {
+  fmt.Printf("Index: %d\tCharacter: %c\t\tCode Point: %U\n", index, char, char)
+}
+// Output:
+// Index: 0	Character: ❗		Code Point: U+2757
+// Index: 3	Character: h		Code Point: U+0068
+// Index: 4	Character: e		Code Point: U+0065
+// Index: 5	Character: l		Code Point: U+006C
+// Index: 6	Character: l		Code Point: U+006C
+// Index: 7	Character: o		Code Point: U+006F
+```
+
+Since runes can be stored as 1, 2, 3, or 4 bytes, the length of a string may not always equal the number of characters in the string. Use the builtin len function to get the length of a string in bytes and the utf8.RuneCountInString function to get the number of runes in a string:
+```
+import "unicode/utf8"
+
+myString := "❗hello"
+stringLength := len(myString)
+numberOfRunes := utf8.RuneCountInString(myString)
+
+fmt.Printf("myString - Length: %d - Runes: %d\n", stringLength, numberOfRunes)
+// Output: myString - Length: 8 - Runes: 6
+```
 
 <br>
 <br>
@@ -655,6 +724,34 @@ An anonymous field is used to field access easier and leads to cleaner code.
 
 We now have the ability to organize struct information inside of existing structs!
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+## Interface
+
+An interface type is effectively a set of method signatures. Any type that defines those methods "implements" the interface implicitly. There is no implements keyword in Go. Here is what an interface definition might look like:
+```
+type InterfaceName interface {
+    MethodOne() MethodOneReturnType
+    MethodTwo(paramOne ParamOneType, paramTwo ParamTwoType) MethodTwoReturnType 
+    ...
+}
+```
+For example, here is the built-in error interface:
+```
+type error interface {
+    Error() string
+}
+```
+This means that any type which implements an `Error()` method which returns a string implements the error interface. This allows a function with return type error to return values of different types as long as all of them satisfy the error interface.
+
+There is one very special interface type in Go: the empty interface type that contains zero methods. The empty interface type is written like this: `interface{}`. 
+Since it has no methods, every type implements the empty interface type. This is helpful for defining a function that can generically accept any value. In that case, the function parameter uses the empty interface type.
 
 <br>
 <br>

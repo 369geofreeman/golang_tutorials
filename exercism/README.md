@@ -20,3 +20,7 @@
 - [Time](https://github.com/369geofreeman/golang_tutorials/blob/exercism/time.go)
 - [Maps](https://github.com/369geofreeman/golang_tutorials/blob/exercism/maps.go)
 - [Looping Maps](https://github.com/369geofreeman/golang_tutorials/blob/exercism/loop_maps.go)
+- [Pointers](https://github.com/369geofreeman/golang_tutorials/blob/exercism/pointers.go)
+- [Methods](https://github.com/369geofreeman/golang_tutorials/blob/exercism/methods.go)
+- [Rune](https://github.com/369geofreeman/golang_tutorials/blob/exercism/rune.go)
+- [Interface](https://github.com/369geofreeman/golang_tutorials/blob/exercism/interface.go)

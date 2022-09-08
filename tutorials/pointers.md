@@ -4,14 +4,14 @@
 - [Variables and Memory](#variables-and-memory)
 - [Getting a pointer to a variable](#getting-a-pointer-to-a-variable)
 - [Slices and maps are already pointers](#slices-and-maps-are-already-pointers)
-
+- [Examples](#examples)
 
 <br>
 <br>
 <hr>
 
 
-# About Pointers
+## About Pointers
 
 Pointers are a way to share memory with other parts of our program, which is useful for two major reasons:
 
@@ -22,7 +22,7 @@ Pointers are a way to share memory with other parts of our program, which is use
 <br>
 <hr>
 
-### Variables and Memory
+## Variables and Memory
 
 Let's say we have a regular integer variable a:
 
@@ -41,7 +41,7 @@ The piece of memory that is associated with a will now be storing the value 3.
 <br>
 <hr>
 
-### Pointers
+## Pointers
 
 While variables allow us to refer to values in memory, sometimes it's useful to know the memory address to which the variable is pointing. Pointers hold the memory addresses of those values. You declare a variable with a pointer type by prefixing the underlying type with an asterisk:
 ```
@@ -52,7 +52,7 @@ Here we declare a variable p of type "pointer to int" `(*int)`. This means that 
 <br>
 <hr>
 
-### Getting a pointer to a variable
+## Getting a pointer to a variable
 
 To find the memory address of the value of a variable, we can use the `&` operator. For example, if we want to find and store the memory address of variable `a` in the pointer `p`, we can do the following:
 ```
@@ -104,7 +104,7 @@ fmt.Println(*p)
 <br>
 <hr>
 
-### Pointers to structs
+## Pointers to structs
 
 So far we've only seen pointers to primitive values. We can also create pointers for `structs`:
 ```
@@ -139,7 +139,7 @@ fmt.Println(p.Name) // Output: "Peter"
 <br>
 <hr>
 
-### Slices and maps are already pointers
+## Slices and maps are already pointers
 
 `Slices` and `maps` are special types because they already have pointers in their implementation. This means that more often than not, we don't need to create pointers for these types to share the memory address for their values. Imagine we have a function that increments the value of a key in a map:
 ```
@@ -162,3 +162,76 @@ fmt.Println(ages)
 The same applies when changing an existing item in a `slice`.
 
 However, actions that return a new `slice` like append are a special case and might not modify the `slice` outside of the function. This is due to the way `slice`s work internally.   
+
+<br>
+<hr>
+
+## Examples
+
+
+- **Basic pointer and derefrencing**
+```
+func main() {
+	var creature string = "shark"
+	var pointer *string = &creature
+
+	fmt.Println("creature =", creature)
+	fmt.Println("pointer =", pointer)
+
+	fmt.Println("*pointer =", *pointer)
+
+	// Dereference creature and change the value to "jellyfish"
+	*pointer = "jellyfish"
+	fmt.Println("*pointer =", *pointer)
+	fmt.Println("creature = ", creature)
+}
+
+// Returns:
+// ---
+// creature = shark
+// pointer = 0xc00009e210
+// *pointer = shark
+// *pointer = jellyfish
+// creature = jellyfish
+```
+
+
+
+- **Passing by reference**
+
+- **Pass by value** = a copy of that value is sent to the function, and any changes to that argument within that function only effect that variable within that function, and not where it was passed from
+<br>
+
+- **Pass by reference** = pass a pointer to that argument, you can change the value from within the function, and also change the value of the original variable that was passed in
+
+
+This is an example of pass by reference
+
+```
+package main
+
+import "fmt"
+
+type Creature struct {
+	Species string
+}
+
+func main() {
+	var creature Creature = Creature{Species: "shark"}
+
+	fmt.Printf("1) %+v\n", creature)
+	changeCreature(&creature)
+	fmt.Printf("3) %+v\n", creature)
+}
+
+func changeCreature(creature *Creature) {
+	creature.Species = "jellyfish"
+	fmt.Printf("2) %+v\n", creature)
+}
+
+// Returns
+// ---
+// 1) {Species:shark}
+// 2) &{Species:jellyfish}
+// 3) {Species:jellyfish}
+```
