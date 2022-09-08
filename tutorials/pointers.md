@@ -8,9 +8,6 @@
 
 <br>
 <br>
-<br>
-<br>
-<br>
 <hr>
 
 
@@ -21,6 +18,9 @@ Pointers are a way to share memory with other parts of our program, which is use
 - When we have large amounts of data, making copies to pass between functions is very inefficient. By passing the memory location of where the data is stored instead, we can dramatically reduce the resource-footprint of our programs.
 
 - By passing pointers between functions, we can access and modify the single copy of the data directly, meaning that any changes made by one function are immediately visible to other parts of the program when the function ends.
+
+<br>
+<hr>
 
 ### Variables and Memory
 
@@ -38,6 +38,9 @@ Similarly, when we need to change the value in the piece of memory of a, we can 
 
 The piece of memory that is associated with a will now be storing the value 3.
 
+<br>
+<hr>
+
 ### Pointers
 
 While variables allow us to refer to values in memory, sometimes it's useful to know the memory address to which the variable is pointing. Pointers hold the memory addresses of those values. You declare a variable with a pointer type by prefixing the underlying type with an asterisk:
@@ -45,6 +48,9 @@ While variables allow us to refer to values in memory, sometimes it's useful to 
 var p *int // 'p' contains the memory address of an integer
 ```
 Here we declare a variable p of type "pointer to int" `(*int)`. This means that p will hold the memory address of an integer. The zero value of pointers is nil because a nil pointer holds no memory address.
+
+<br>
+<hr>
 
 ### Getting a pointer to a variable
 
@@ -95,6 +101,9 @@ fmt.Println(*p)
 // panic: runtime error: invalid memory address or nil pointer dereference
 ```
 
+<br>
+<hr>
+
 ### Pointers to structs
 
 So far we've only seen pointers to primitive values. We can also create pointers for `structs`:
@@ -126,6 +135,9 @@ fmt.Println(p.Name) // Output: "Peter"
                     // Go automatically dereferences 'p' to allow
                     // access to the 'Name' field
 ```
+
+<br>
+<hr>
 
 ### Slices and maps are already pointers
 
