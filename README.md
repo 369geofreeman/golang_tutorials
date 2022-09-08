@@ -1,8 +1,10 @@
 # Golang
 
+### Tutorials
 
 - [CheatSheet](https://github.com/369geofreeman/golang_tutorials/blob/main/cheatsheet.md)
 - [Exercism track](https://github.com/369geofreeman/golang_tutorials/blob/exercism)
+- [pointers](https://github.com/369geofreeman/golang_tutorials/blob/tutorials/pointers.md)
 
 
 ### Rest APIs
