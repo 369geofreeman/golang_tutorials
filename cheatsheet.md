@@ -33,7 +33,7 @@
 <hr>
 
 
-# Hints
+## Hints
 
 - Get an objects type | fmt.Printf("%T\n", values)
 - create error | errors.New(string)
@@ -45,6 +45,8 @@
 - convert float64 to float32 | f64 := float64(f32)
 - Float tp precision | "%.2f"
 - Use import "strconv" to covert between primative types | var s string = strconv.Itoa(number)
+
+- String to lower/upper | strings.ToLower("Gopher")
 
 - Generate random number | n := rand.Intn(100) // n is a random int, 0 <= n < 100
 - Generate random number between two ints | rand.Intn(max - min) + min
