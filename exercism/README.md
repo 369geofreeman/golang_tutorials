@@ -28,3 +28,4 @@
 - [Stringers](https://github.com/369geofreeman/golang_tutorials/blob/exercism/stringers.go)
 - [Regular Expressions](https://github.com/369geofreeman/golang_tutorials/blob/exercism/regex.go)
 - [Type Conversion](https://github.com/369geofreeman/golang_tutorials/blob/exercism/type_conv.go)
+- [First order functions](https://github.com/369geofreeman/golang_tutorials/blob/exercism/fof.go)
