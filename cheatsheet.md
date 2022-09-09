@@ -8,6 +8,7 @@
 - [Libaries](#libaries)
 - [File Stuff](#file-stuff)
 - [variable](#variable)
+- [Stringers](#stringers)
 - [array](#array)
 - [loops](#loops)
 - [Maps](#maps)
@@ -42,6 +43,8 @@
 - get hour from time.time | now.Hour()
 
 - convert float64 to float32 | f64 := float64(f32)
+- Float tp precision | "%.2f"
+- Use import "strconv" to covert between primative types | var s string = strconv.Itoa(number)
 
 - Generate random number | n := rand.Intn(100) // n is a random int, 0 <= n < 100
 - Generate random number between two ints | rand.Intn(max - min) + min
@@ -100,6 +103,22 @@ rand.Shuffle(len(x), func(i, j int) {
 | uint    | 32 or 64 bits                                                          |
 | int     | same size as uint                                                      |
 | uintptr | an unsigned integer to store the uninterpreted bits of a pointer value |
+
+
+
+- Zero values
+
+| Type      | Zero Value |
+|-----------|------------|
+| boolean   | false      |
+| numeric   | 0          |
+| string    | ""         |
+| pointer   | nil        |
+| function  | nil        |
+| interface | nil        |
+| slice     | nil        |
+| channel   | nil        |
+| map       | nil        |
 
 **Runes**
 
@@ -276,6 +295,87 @@ import (
 - var name string = "Jelly"					<-- standard way
 - name := "jelly"							<-- go automatically infers the type
 - name, age, likeGo := "Jelly", 29, true	<-- multiple variables on the same line 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+## Stringers
+
+- Stringer is an interface for defining the string format of values.
+
+The interface consists of a single String method:
+```
+type Stringer interface {
+    String() string
+}
+```
+
+Types that want to implement this interface must have a String() method that returns a human-friendly string representation of the type. The fmt package (and many others) will look for this method to format and print values.
+
+**Example: Distances**
+
+Assume we are working on an application that deals with geographical distances measured in different units. We have defined types `DistanceUnit` and `Distance` as follows:
+```
+type DistanceUnit int
+
+const (
+	Kilometer    DistanceUnit = 0
+	Mile         DistanceUnit = 1
+)
+ 
+type Distance struct {
+	number float64
+	unit   DistanceUnit
+} 
+```
+In the example above, Kilometer and Mile are constants of type `DistanceUnit`.
+
+These types do not implement interface Stringer as they lack the String method. Hence fmt functions will print Distance values using Go's "default format":
+```
+mileUnit := Mile
+fmt.Sprint(mileUnit)
+// => 1
+// The result is '1' because that is the underlying value of the 'Mile' constant (see constant declarations above) 
+
+dist := Distance{number: 790.7, unit: Kilometer}
+fmt.Sprint(dist)
+// => {790.7 0}
+// not a very useful output!
+```
+
+In order to make the output more informative, we implement interface Stringer for `DistanceUnit` and Distance types by adding a String method to each type:
+```
+func (sc DistanceUnit) String() string {
+	units := []string{"km", "mi"}
+	return units[sc]
+}
+
+func (d Distance) String() string {
+	return fmt.Sprintf("%v %v", d.number, d.unit)
+}
+```
+
+fmt package functions will call these methods when formatting Distance values:
+```
+kmUnit := Kilometer
+kmUnit.String()
+// => km
+
+mileUnit := Mile
+mileUnit.String()
+// => mi
+
+dist := Distance{
+	number: 790.7,
+	unit: Kilometer,
+}
+dist.String()
+// => 790.7 km
+```
 
 <br>
 <br>

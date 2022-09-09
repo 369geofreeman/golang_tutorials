@@ -24,3 +24,7 @@
 - [Methods](https://github.com/369geofreeman/golang_tutorials/blob/exercism/methods.go)
 - [Rune](https://github.com/369geofreeman/golang_tutorials/blob/exercism/rune.go)
 - [Interface](https://github.com/369geofreeman/golang_tutorials/blob/exercism/interface.go)
+- [Null values & pointers](https://github.com/369geofreeman/golang_tutorials/blob/exercism/null_point.go)
+- [Stringers](https://github.com/369geofreeman/golang_tutorials/blob/exercism/stringers.go)
+- [Regular Expressions](https://github.com/369geofreeman/golang_tutorials/blob/exercism/regex.go)
+- [Type Conversion](https://github.com/369geofreeman/golang_tutorials/blob/exercism/type_conv.go)
