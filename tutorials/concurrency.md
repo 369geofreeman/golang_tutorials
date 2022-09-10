@@ -31,7 +31,7 @@ func main() {
 }
 ```
 
-This program consists of two goroutines. The first goroutine is implicit and is the main function itself. The second goroutine is created when we call go f(0). Normally when we invoke a function our program will execute all the statements in a function and then return to the next line following the invocation. With a goroutine we return immediately to the next line and don't wait for the function to complete. This is why the call to the Scanln function has been included; without it the program would exit before being given the opportunity to print all the numbers.
+This program consists of two goroutines. The first goroutine is implicit and is the `main` function itself. The second goroutine is created when we call go `f(0)`. Normally when we invoke a function our program will execute all the statements in a function and then return to the next line following the invocation. With a goroutine we return immediately to the next line and don't wait for the function to complete. This is why the call to the Scanln function has been included; without it the program would exit before being given the opportunity to print all the numbers.
 
 <br>
 
@@ -47,7 +47,7 @@ func main() {
 }
 ```
 
-You may have noticed that when you run this program it seems to run the goroutines in order rather than simultaneously. Let's add some delay to the function using time.Sleep and rand.Intn:
+You may have noticed that when you run this program it seems to run the goroutines in order rather than simultaneously. Let's add some delay to the function using `time.Sleep` and `rand.Intn`:
 
 ```
 package main
@@ -117,7 +117,7 @@ func main() {
   fmt.Scanln(&input)
 }
 ```
-This program will print “ping” forever (hit enter to stop it). A channel type is represented with the keyword chan followed by the type of the things that are passed on the channel (in this case we are passing strings). The <- (left arrow) operator is used to send and receive messages on the channel. c <- "ping" means send "ping". msg := <- c means receive a message and store it in msg. The fmt line could also have been written like this: fmt.Println(<-c) in which case we could remove the previous line.
+This program will print **“ping”** forever (hit enter to stop it). A channel type is represented with the keyword `chan` followed by the type of the things that are passed on the channel (in this case we are passing strings). The `<-` (left arrow) operator is used to send and receive messages on the channel. `c <- "ping"` means send **"ping"**. `msg := <- c` means receive a message and store it in `msg`. The `fmt` line could also have been written like this: `fmt.Println(<-c)` in which case we could remove the previous line.
 
 <br>
 
@@ -154,10 +154,12 @@ func main() {
 
 We can specify a direction on a channel type thus restricting it to either sending or receiving. For example pinger's function signature can be changed to this:
 
-func pinger(c chan<- string)
+`func pinger(c chan<- string)`
+
 Now c can only be sent to. Attempting to receive from c will result in a compiler error. Similarly we can change printer to this:
 
-func printer(c <-chan string)
+`func printer(c <-chan string)`
+
 A channel that doesn't have these restrictions is known as bi-directional. A bi-directional channel can be passed to a function that takes send-only or receive-only channels, but the reverse is not true.
 
 
@@ -205,7 +207,7 @@ func main() {
 }
 ```
 
-This program prints “from 1” every 2 seconds and “from 2” every 3 seconds. select picks the first channel that is ready and receives from it (or sends to it). If more than one of the channels are ready then it randomly picks which one to receive from. If none of the channels are ready, the statement blocks until one becomes available.
+This program prints **“from 1”** every 2 seconds and **“from 2”** every 3 seconds. `select` picks the first channel that is ready and receives from it (or sends to it). If more than one of the channels are ready then it randomly picks which one to receive from. If none of the channels are ready, the statement blocks until one becomes available.
 
 <br>
 

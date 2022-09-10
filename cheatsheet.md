@@ -4,6 +4,7 @@
 
 - [Hints](#hints)
 - [Types](#types)
+- [Testing](#testing)
 - [Terminal Stuff](#terminal-stuff)
 - [Libaries](#libaries)
 - [File Stuff](#file-stuff)
@@ -24,6 +25,11 @@
 - [Dereferencing](#dereferencing)
 - [concurrency Go routines](#concurrency-go-routines)
 - [Example of a file](#example-of-a-file)
+
+
+- You can launch the docs locally by running `godoc -http :8000`. If you go to `localhost:8000/pkg` you will see all the packages installed on your system.
+- The vast majority of the standard library has excellent documentation with examples. Navigating to `http://localhost:8000/pkg/testing/` would be worthwhile to see what's available to you.
+- If you don't have godoc command, then maybe you are using the newer version of Go (1.14 or later) which is no longer including godoc. You can manually install it with go install `golang.org/x/tools/cmd/godoc@latest`.
 
 <br>
 <br>
@@ -192,6 +198,42 @@ numberOfRunes := utf8.RuneCountInString(myString)
 fmt.Printf("myString - Length: %d - Runes: %d\n", stringLength, numberOfRunes)
 // Output: myString - Length: 8 - Runes: 6
 ```
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+
+
+## Testing
+
+Testing is built into Go. To test functions create a file with `_test_` at the end and call the functions in it like so:
+```
+package main
+
+import "testing"
+
+func TestHello(t *testing.T) {
+	got := Hello()    // Function to call
+	want := "Hello, world"    // expected output
+
+	if got != want {
+		t.Errorf("Got %q want %q", got, want)
+	}
+}
+```
+
+Call it with : **go test**
+
+Writing a test is just like writing a function, with a few rules
+- It needs to be in a file with a name like xxx_test.go
+- The test function must start with the word Test
+- The test function takes one argument only t *testing.T
+- In order to use the *testing.T type, you need to import "testing"
+- For now, it's enough to know that your t of type *testing.T is your "hook" into the testing framework so you can do things like t.Fail() when you want to fail.
+
 
 <br>
 <br>
