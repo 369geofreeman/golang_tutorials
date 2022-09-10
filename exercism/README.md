@@ -42,3 +42,4 @@
 - [Difference Of Squares](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/diffSquare.go)
 - [Difference Of Squares](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/diffSquare.go)
 - [Grains](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/chess.go)
+- [Clock](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/clock.go)
