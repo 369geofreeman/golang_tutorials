@@ -257,6 +257,42 @@ By ensuring your tests are fast and setting up your tools so that running tests 
 By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run.
 
 
+**Benchmarking**
+
+Run: go test -bench=.
+
+Runs the code N times (the function decides)
+Returns
+---
+goos: darwin
+goarch: amd64
+pkg: github.com/quii/learn-go-with-tests/for/v4
+10000000           136 ns/op
+PASS
+---
+
+What 136 ns/op means is our function takes on average 136 nanoseconds 
+to run. Which is pretty ok! To test this it ran it 10000000 times.
+
+
+**Examples**
+```
+// Runs an example of the function | terminal: go test -v
+// This will break if the code changes to make the exmaple no longer valid
+func ExampleAdd() {
+	sum := Add(1, 5)
+	fmt.Println(sum)
+	// Output: 6
+}
+```
+
+**Cover**
+
+Go's built-in testing toolkit features a coverage tool. Whilst striving for 100% coverage should not be your end goal, the coverage tool can help identify areas of your code not covered by tests. If you have been strict with TDD, it's quite likely you'll have close to 100% coverage anyway.
+
+Run: go test -cover
+
+
 <br>
 <br>
 <br>
