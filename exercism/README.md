@@ -37,3 +37,8 @@
 - [Hamming](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/hamming.go)
 - [Raindrops](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/raindrops.go)
 - [Scrabble Score](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/scrabbleScore.go)
+- [Isogram](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/isogram.go)
+- [Luhn Algorithm](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/Luhn.go)
+- [Difference Of Squares](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/diffSquare.go)
+- [Difference Of Squares](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/diffSquare.go)
+- [Grains](https://github.com/369geofreeman/golang_tutorials/blob/main/exercism/exercises/chess.go)

@@ -47,6 +47,10 @@
 - Use import "strconv" to covert between primative types | var s string = strconv.Itoa(number)
 
 - String to lower/upper | strings.ToLower("Gopher")
+- Strip all white space from a sting | strings.ReplaceAll(randomString, " ", "")
+
+- Square ints | math.Pow(num, 2)  // returns float64
+- Square floats to int | int(math.Pow(num, 2))
 
 - Generate random number | n := rand.Intn(100) // n is a random int, 0 <= n < 100
 - Generate random number between two ints | rand.Intn(max - min) + min
