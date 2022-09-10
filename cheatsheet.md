@@ -216,23 +216,45 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	got := Hello()    // Function to call
-	want := "Hello, world"    // expected output
+	t.Run("Saying hello to people", func(t *testing.T) {
+		got := Hello("Chris")
+		want := "Hello, Chris"
 
-	if got != want {
-		t.Errorf("Got %q want %q", got, want)
-	}
+		if got != want {
+			t.Errorf("Got %q want %q", got, want)
+		}
+	})
+	t.Run("Say 'Hello, World when an empty string is supplied", func(t *testing.T) {
+		got := Hello("")
+		want := "Hello, World"
+
+		if got != want {
+			t.Errorf("got %q want %q", got, want)
+		}
+	})
 }
 ```
 
 Call it with : **go test**
 
-Writing a test is just like writing a function, with a few rules
+Writing a test is just like writing a function, with a few rules:
+
 - It needs to be in a file with a name like xxx_test.go
 - The test function must start with the word Test
 - The test function takes one argument only t *testing.T
 - In order to use the *testing.T type, you need to import "testing"
 - For now, it's enough to know that your t of type *testing.T is your "hook" into the testing framework so you can do things like t.Fail() when you want to fail.
+
+**Discipline**
+
+- Write a test
+- Make the compiler pass
+- Run the test, see that it fails and check the error message is meaningful
+- Write enough code to make the test pass
+- Refactor
+
+By ensuring your tests are fast and setting up your tools so that running tests is simple you can get in to a state of flow when writing your code.
+By not writing tests you are committing to manually checking your code by running your software which breaks your state of flow and you won't be saving yourself any time, especially in the long run.
 
 
 <br>
@@ -973,6 +995,8 @@ default:
 
 
 ### Functions
+
+**In Go, public functions start with a capital letter and private ones start with a lowercase.**
 
 - ```main()``` calls all function and runs all code (think python __main__ == "__name__")
 - Can't return a function with declaring a return type
