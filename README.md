@@ -4,6 +4,7 @@
 
 - [CheatSheet](https://github.com/369geofreeman/golang_tutorials/blob/main/cheatsheet.md)
 - [Exercism track](https://github.com/369geofreeman/golang_tutorials/tree/main/exercism)
+- [Interface](https://github.com/369geofreeman/golang_tutorials/blob/main/tutorials/interface.go)
 - [Pointers](https://github.com/369geofreeman/golang_tutorials/blob/main/tutorials/pointers.md)
 - [Concurrency](https://github.com/369geofreeman/golang_tutorials/blob/main/tutorials/concurrency.md)
 - [Testing](https://github.com/369geofreeman/golang_tutorials/blob/main/gwt)
