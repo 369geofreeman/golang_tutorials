@@ -262,14 +262,15 @@ By not writing tests you are committing to manually checking your code by runnin
 Run: go test -bench=.
 
 Runs the code N times (the function decides)
-Returns
----
+
+Returns:
+```
 goos: darwin
 goarch: amd64
 pkg: github.com/quii/learn-go-with-tests/for/v4
 10000000           136 ns/op
 PASS
----
+```
 
 What 136 ns/op means is our function takes on average 136 nanoseconds 
 to run. Which is pretty ok! To test this it ran it 10000000 times.
