@@ -35,3 +35,24 @@ func Perimeter(rectangle Rectangle) float64 {
 func Area(rectangle Rectangle) float64 {
 	return rectangle.Width * rectangle.Height
 }
+
+// package main
+
+// import "fmt"
+
+// type Counter struct {
+// 	n int
+// }
+
+// func (c Counter) Count() {
+// 	for c.n != 0 {
+// 		fmt.Println(c.n)
+// 		c.n -= 1
+// 	}
+// 	fmt.Println("Go!")
+// }
+
+// func main() {
+// 	c := Counter{n: 3}
+// 	c.Count()
+// }
