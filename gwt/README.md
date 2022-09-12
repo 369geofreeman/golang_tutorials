@@ -7,3 +7,4 @@
 - [Arrays and Slices](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/arrSlice)
 - [Structs, Methods & Interfaces](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/struct)
 - [Pointers & Errors](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/pointersErrors)
+- [Maps](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/maps)

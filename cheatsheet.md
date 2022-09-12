@@ -687,6 +687,12 @@ if status {
 }
 ```
 
+A map lookup can return two variables, the forst is the result of the look up and the second is a boolean suggetsing if the word was found or not
+```
+res, bool = myMap[value]
+// Could return myValue, true. Or, "", false
+```
+
 - Adding or updating
 
 ```customers["George"] = 10.50```
