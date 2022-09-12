@@ -9,3 +9,4 @@
 - [Pointers & Errors](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/pointersErrors)
 - [Maps](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/maps)
 - [Dependency Injection](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/depInj)
+- [Mocking](https://github.com/369geofreeman/golang_tutorials/tree/main/gwt/mocking)
